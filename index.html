@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etch-a-Sketch</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="header">Etch-a-Sketch</div>
+    <div class="container">
+      <div class="area"></div>
+      <div class="options">
+        <div class="vol-selection">
+          <label for="vol-select">Select number of squares</label>
+          <input id="vol-select" type="range" min="1" max="100" />
+        </div>
+        <div class="color-selection">
+          <label for="colorselect">Select your color</label>
+          <input
+            id="color-select"
+            type="color"
+            name="colorselect"
+            value="#000000"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

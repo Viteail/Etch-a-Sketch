@@ -14,6 +14,10 @@ BUTTONCLEARCOLOR.addEventListener("click", squareSelection);
 
 function squareSelection() {
   Area.textContent = "";
+  Area.style.animation = "onappear 800ms ease";
+  setTimeout(() => {
+    Area.style.animation = "";
+  }, 800);
   const vol = getSquareSelection.value;
   Area.addEventListener("mouseover", (e) => {
     if (e.target.classList.contains("box"))

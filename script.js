@@ -2,15 +2,61 @@ const getContainer = document.querySelector(".container");
 const getOptions = document.querySelector(".options");
 const getColorSelection = document.querySelector("#color-select");
 const getSquareSelection = document.querySelector("#vol-select");
+const getButtonColorMode = document.querySelector("#color-mode");
 
 const Area = document.createElement("div");
 Area.classList.add("area");
 getContainer.appendChild(Area);
 
+let color = getColorSelection.value;
+
+getButtonColorMode.addEventListener("click", colorMode);
+
+const BUTTONRANDOMCOLOR = document.createElement("button");
+BUTTONRANDOMCOLOR.textContent = "Random";
+getOptions.appendChild(BUTTONRANDOMCOLOR);
+
+BUTTONRANDOMCOLOR.addEventListener("click", () => randomcolorMode());
+
 const BUTTONCLEARCOLOR = document.createElement("button");
 BUTTONCLEARCOLOR.textContent = "Clear";
 getOptions.appendChild(BUTTONCLEARCOLOR);
+
 BUTTONCLEARCOLOR.addEventListener("click", squareSelection);
+
+function randomcolorMode() {
+  getButtonColorMode.classList.remove("colormodeeffect");
+  BUTTONRANDOMCOLOR.classList.add("randomcoloreffect");
+  Area.removeEventListener("mouseover", applyColorMode);
+  getColorSelection.removeEventListener("change", getColor);
+  Area.addEventListener("mouseover", applyRandomColor);
+}
+
+function colorMode() {
+  getButtonColorMode.classList.add("colormodeeffect");
+  BUTTONRANDOMCOLOR.classList.remove("randomcoloreffect");
+  Area.removeEventListener("mouseover", applyRandomColor);
+  color = getColorSelection.value;
+  getColorSelection.addEventListener("change", getColor);
+  Area.addEventListener("mouseover", applyColorMode);
+}
+
+function getColor() {
+  color = getColorSelection.value;
+}
+
+function applyRandomColor(e) {
+  if (e.target.classList.contains("box")) {
+    e.target.style.backgroundColor = color =
+      "#" + Math.floor(Math.random() * 16777215).toString(16);
+  }
+}
+
+function applyColorMode(e) {
+  if (e.target.classList.contains("box")) {
+    e.target.style.backgroundColor = color;
+  }
+}
 
 function squareSelection() {
   Area.textContent = "";
@@ -19,10 +65,6 @@ function squareSelection() {
     Area.style.animation = "";
   }, 800);
   const vol = getSquareSelection.value;
-  Area.addEventListener("mouseover", (e) => {
-    if (e.target.classList.contains("box"))
-      e.target.style.backgroundColor = getColorSelection.value;
-  });
 
   for (let i = 0; i < vol * vol; i++) {
     const box = document.createElement("div");
@@ -44,3 +86,4 @@ function showSquareSelect() {
 }
 
 squareSelection();
+colorMode();

@@ -194,3 +194,71 @@ button:hover {
 .footer:hover {
   box-shadow: 0px -2px 20px 1px rgba(0, 255, 239, 0.3029586834733894);
 }
+
+.small-button {
+  padding: 10px 12px;
+  font-size: 12px;
+}
+
+.randomcoloreffect {
+  animation: bgrandom infinite linear 2000ms;
+}
+
+@keyframes bgrandom {
+  0% {
+    background-color: rgb(18, 163, 163);
+  }
+  10% {
+    background-color: rgb(21, 64, 180);
+  }
+  20% {
+    background-color: rgb(92, 7, 148);
+  }
+  30% {
+    background-color: rgb(214, 22, 189);
+  }
+  40% {
+    background-color: rgb(202, 17, 88);
+  }
+  50% {
+    background-color: rgb(236, 10, 10);
+  }
+  60% {
+    background-color: rgb(224, 125, 12);
+  }
+  70% {
+    background-color: rgb(215, 230, 9);
+  }
+  80% {
+    background-color: rgb(116, 230, 10);
+  }
+  90% {
+    background-color: rgb(36, 233, 10);
+  }
+  100% {
+    background-color: rgb(14, 235, 117);
+  }
+}
+
+.colormodeeffect {
+  animation: toggle infinite linear 2000ms;
+  background-color: rgb(10, 133, 133);
+}
+
+@keyframes toggle {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
